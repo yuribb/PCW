@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+option csharp_namespace = "PCW.Rpc.TagService";
+
+import "Protos/command.proto";
+
+service Tag {
+	rpc GetTag (GetTagRequest) returns (GetTagReply);
+	rpc GetTags (GetTagsRequest) returns (GetTagsReply);
+	rpc AddTag (AddTagRequest) returns (AddTagReply);
+	rpc UpdateTag (UpdateTagRequest) returns (UpdateTagReply);
+	rpc DeleteTag (DeleteTagRequest) returns (DeleteTagReply);
+}
+
+message GetTagRequest {
+	int64 id = 1;
+}
+
+message GetTagReply {
+	int64 id = 1;
+	string name = 2;
+}
+
+message GetTagsRequest {
+	command.Pagination pagination = 1;
+	command.TagFilter filter = 2;
+}
+
+message GetTagsReply {
+	repeated GetTagReply tags = 1;
+}
+
+message AddTagRequest {
+	string name = 1;
+}
+
+message AddTagReply {
+	int64 id = 1;
+	string name = 2;
+}
+
+message UpdateTagRequest {
+	int64 id = 1;
+	string name = 2;
+}
+
+message UpdateTagReply {
+	int64 id = 1;
+	string name = 2;
+}
+
+message DeleteTagRequest {
+	int64 id = 1;
+}
+
+message DeleteTagReply {
+	int64 id = 1;
+	bool deleted = 2;
+}

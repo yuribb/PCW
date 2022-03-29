@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "PCW.Rpc.PostCardService";
+
+package postCard;
+
+service PostCard {
+	rpc AddPostCard (AddPostCardRequest) returns (AddPostCardReply);
+}
+
+message AddPostCardRequest {
+	string name = 1;
+}
+
+message AddPostCardReply {
+	string name = 1;
+}

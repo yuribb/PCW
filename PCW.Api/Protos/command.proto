@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "PCW.Rpc.Command";
+
+package command;
+
+message Pagination {
+	int32 pageNumber = 1;
+	int32 pageSize = 2;
+}
+
+message TagFilter {
+	int64 like = 1;
+}
+
+message File {
+	bytes content = 1;
+}
