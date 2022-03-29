@@ -2,6 +2,8 @@
 
 option csharp_namespace = "PCW.Rpc.PostCardService";
 
+import "Protos/command.proto";
+
 package postCard;
 
 service PostCard {
@@ -10,6 +12,8 @@ service PostCard {
 
 message AddPostCardRequest {
 	string name = 1;
+	command.File file = 2;
+	repeated int64 tagIds = 3;
 }
 
 message AddPostCardReply {

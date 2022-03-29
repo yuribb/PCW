@@ -11,13 +11,13 @@ namespace PCW.Service
 {
     public class PostCardService : IPostCardService
     {
-        private readonly IPostCardStorage _storage;
+        //private readonly IPostCardStorage _storage;
         private readonly IPostCardDbContext _db;
 
-        public PostCardService(IPostCardStorage storage,
+        public PostCardService(/*IPostCardStorage storage,*/
             IPostCardDbContext db)
         {
-            _storage = storage;
+            //_storage = storage;
             _db = db;
             _db.CreateDbIfNotExist();
         }

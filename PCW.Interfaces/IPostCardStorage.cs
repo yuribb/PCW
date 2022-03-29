@@ -9,7 +9,7 @@ namespace PCW.Interfaces
 {
     public interface IPostCardStorage
     {
-        public PostCardDto AddPostCard(string path);
-        public bool DeletePostCard(PostCardDto postCard);
+        public string AddPostCard(string contentType, byte[] content);
+        public bool DeletePostCard(string uniqueName);
     }
 }

@@ -12,3 +12,7 @@ message Pagination {
 message TagFilter {
 	int64 like = 1;
 }
+
+message File {
+	bytes content = 1;
+}

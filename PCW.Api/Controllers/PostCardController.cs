@@ -1,4 +1,5 @@
-﻿using Google.Protobuf;
+﻿using AutoMapper;
+using Google.Protobuf;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PCW.Api.Commands;
@@ -14,17 +15,18 @@ namespace PCW.Api.Controllers
     {
         private readonly IWebHostEnvironment _environment;
         private readonly PostCard.PostCardClient _client;
+        private readonly IMapper _mapper;
 
-        public PostCardController(IWebHostEnvironment environment, PostCard.PostCardClient client)
+        public PostCardController(IWebHostEnvironment environment, PostCard.PostCardClient client, IMapper mapper)
         {
             _environment = environment;
             _client = client;
+            _mapper = mapper;
         }
 
         [HttpPost]
         public async Task<AddPostCardResponse> AddPostCard([FromForm] AddPostCardCommand command)
         {
-
             var request = new AddPostCardRequest
             {
                 File = new Rpc.Command.File
@@ -35,7 +37,9 @@ namespace PCW.Api.Controllers
                 TagIds = { command.TagIds }
             };
 
-            return new AddPostCardResponse();
+            var response = await _client.AddPostCardAsync(request);
+            var result = _mapper.Map<AddPostCardResponse>(response);
+            return result;
         }
     }
 }

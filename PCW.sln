@@ -25,9 +25,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RpcServices", "RpcServices"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCW.Rpc.PostCardService", "PCW.Rpc.PostCardService\PCW.Rpc.PostCardService.csproj", "{FB7C759C-37DB-4732-8302-3F5C96FC5052}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCW.Rpc.TagService", "PCW.Rpc.TagService\PCW.Rpc.TagService.csproj", "{4055509F-E76B-4A01-B07C-B5504EF7204C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCW.Rpc.TagService", "PCW.Rpc.TagService\PCW.Rpc.TagService.csproj", "{4055509F-E76B-4A01-B07C-B5504EF7204C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCW.Data.SQLite", "PCW.Data.SQLite\PCW.Data.SQLite.csproj", "{3C089A32-8A5E-415A-8E39-A99DBB07FD9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{0C055F6C-04D3-4B0F-97D1-2AF9E7BDC27E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCW.Storage.FileStorage", "PCW.Storage.FileStorage\PCW.Storage.FileStorage.csproj", "{502AF40B-AE15-4127-BC93-C207B65E36FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +75,10 @@ Global
 		{3C089A32-8A5E-415A-8E39-A99DBB07FD9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C089A32-8A5E-415A-8E39-A99DBB07FD9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C089A32-8A5E-415A-8E39-A99DBB07FD9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{502AF40B-AE15-4127-BC93-C207B65E36FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{502AF40B-AE15-4127-BC93-C207B65E36FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{502AF40B-AE15-4127-BC93-C207B65E36FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{502AF40B-AE15-4127-BC93-C207B65E36FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +90,7 @@ Global
 		{FB7C759C-37DB-4732-8302-3F5C96FC5052} = {A21DE408-C4C7-4EFB-BF71-F50DE3EB5D8B}
 		{4055509F-E76B-4A01-B07C-B5504EF7204C} = {A21DE408-C4C7-4EFB-BF71-F50DE3EB5D8B}
 		{3C089A32-8A5E-415A-8E39-A99DBB07FD9C} = {D2185F3B-1966-4250-93DA-738FB27BE3EA}
+		{502AF40B-AE15-4127-BC93-C207B65E36FD} = {0C055F6C-04D3-4B0F-97D1-2AF9E7BDC27E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28F9BA6B-3FEA-44BA-B749-A959055C1A5E}

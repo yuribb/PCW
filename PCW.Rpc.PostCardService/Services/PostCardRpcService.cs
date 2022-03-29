@@ -20,10 +20,18 @@ namespace PCW.Rpc.PostCardService.Services
 
         public override async Task<AddPostCardReply> AddPostCard(AddPostCardRequest request, ServerCallContext context)
         {
-            var dto = _mapper.Map<PostCardDto>(request);
-            dto = await _service.AddPostCard(dto);
-            var reply = _mapper.Map<AddPostCardReply>(dto);
-            return reply;
+            try
+            {
+                var dto = _mapper.Map<PostCardDto>(request);
+                dto = await _service.AddPostCard(dto);
+                var reply = _mapper.Map<AddPostCardReply>(dto);
+                return reply;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
     }
