@@ -2,6 +2,6 @@
 {
     public class TagFilterCommand
     {
-        public string Like { get; set; }
+        public string Like { get; set; } = default!;
     }
 }

@@ -15,5 +15,10 @@ namespace PCW.Api.Hosting
             });
             return services;
         }
+
+        public static T GetSettings<T>(this WebApplicationBuilder builder, string? sectionName = null) where T : class
+        {
+            return builder.Configuration.GetSection(sectionName ?? typeof(T).Name).Get<T>();
+        }
     }
 }

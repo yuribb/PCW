@@ -2,20 +2,17 @@ using AutoMapper;
 using Grpc.Core;
 using PCW.Contracts;
 using PCW.Interfaces;
-using PCW.Rpc.TagService;
 
 namespace PCW.Rpc.TagService.Services
 {
     public class TagRpcService : Tag.TagBase
     {
-        private readonly ILogger<TagRpcService> _logger;
         private readonly IMapper _mapper;
         private readonly ITagService _service;
-        public TagRpcService(ILogger<TagRpcService> logger,
+        public TagRpcService(
             IMapper mapper,
             ITagService service)
         {
-            _logger = logger;
             _mapper = mapper;
             _service = service;
         }

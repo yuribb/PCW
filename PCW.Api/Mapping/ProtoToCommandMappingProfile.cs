@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PCW.Api.Commands.Responses;
+using PCW.Rpc.PostCardService;
 using PCW.Rpc.TagService;
 
 namespace PCW.Api.Mapping
@@ -12,6 +13,8 @@ namespace PCW.Api.Mapping
             CreateMap<AddTagReply, AddTagResponse>();
             CreateMap<UpdateTagReply, UpdateTagResponse>();
             CreateMap<DeleteTagReply, DeleteTagResponse>();
+
+            CreateMap<AddPostCardReply, AddPostCardResponse>();
         }
     }
 }

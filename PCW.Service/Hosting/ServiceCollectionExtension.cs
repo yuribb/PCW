@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using PCW.Interfaces;
-using AutoMapper;
-using PCW.Data.SQLite.Hosting;
 using PCW.Service.Mapping;
 
 namespace PCW.Service.Hosting

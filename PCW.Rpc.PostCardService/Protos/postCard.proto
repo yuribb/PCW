@@ -7,15 +7,30 @@ import "Protos/command.proto";
 package postCard;
 
 service PostCard {
+	rpc GetPostCard (.postCard.GetPostCardRequest) returns (.postCard.GetPostCardReply);
 	rpc AddPostCard (AddPostCardRequest) returns (AddPostCardReply);
+}
+
+message GetPostCardRequest {
+	int64 id = 1;
+}
+
+message GetPostCardReply {
+	int64 id = 1;
+	string name = 2;
+	string contentType = 3;
+	command.File file = 4;
+	repeated string tags = 5;
 }
 
 message AddPostCardRequest {
 	string name = 1;
-	command.File file = 2;
-	repeated int64 tagIds = 3;
+	string contentType = 2;
+	command.File file = 3;
+	repeated int64 tagIds = 4;
 }
 
 message AddPostCardReply {
-	string name = 1;
+	int64 id = 1;
+	string name = 2;
 }

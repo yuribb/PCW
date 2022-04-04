@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Google.Protobuf.Collections;
+using PCW.Contracts;
 
 namespace PCW.Rpc.PostCardService.Mapping
 {
@@ -6,7 +8,9 @@ namespace PCW.Rpc.PostCardService.Mapping
     {
         public DtoToProtoMappingProfile()
         {
+            CreateMap(typeof(RepeatedField<>), typeof(List<>)).ConvertUsing(typeof(RepeatedFieldToListTypeConverter<,>));
 
+            CreateMap<PostCardDto, AddPostCardReply>();
         }
     }
 }

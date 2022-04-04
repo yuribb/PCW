@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
-using PCW.Data.SQLite.Hosting;
 using PCW.Service.Hosting;
-using ServiceCollectionExtension = PCW.Data.SQLite.Hosting.ServiceCollectionExtension;
 
 namespace PCW.Desktop
 {
@@ -22,7 +20,6 @@ namespace PCW.Desktop
 
         private void ConfigureServices(IServiceCollection services)
         {
-            //ServiceCollectionExtension.AddPostCardDbContext(services);
             services.AddPostCardService();
             services.AddSingleton<MainWindow>();
         }

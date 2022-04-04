@@ -1,24 +1,27 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using PCW.Contracts;
-using PCW.Contracts.Exceptions;
+﻿using PCW.Contracts.Exceptions;
 using PCW.Interfaces;
 
 namespace PCW.Storage.FileStorage
 {
     public class FileStorage : IPostCardStorage
     {
-        private readonly string _storagePath = default!;
+        private readonly string _storagePath;
 
         public FileStorage(string storagePath)
         {
             _storagePath = storagePath;
+            if (!Directory.Exists(_storagePath))
+            {
+                Directory.CreateDirectory(_storagePath);
+            }
         }
 
         public async Task<string> AddPostCard(string contentType, byte[] content)
         {
-            var filePath = GetFilePath(contentType);
+            var fileUniqueName = UniqueNameGenerator.GetName(contentType);
+            var filePath = GetFilePath(contentType, fileUniqueName);
             await File.WriteAllBytesAsync(filePath, content);
-            return filePath;
+            return fileUniqueName;
         }
 
         public async Task<bool> DeletePostCard(string uniqueName)
@@ -49,9 +52,9 @@ namespace PCW.Storage.FileStorage
             return filePath;
         }
 
-        private string GetFilePath(string contentType)
+        private string GetFilePath(string contentType, string? name = null)
         {
-            var filePath = Path.Combine(_storagePath, UniqueNameGenerator.GetName(contentType));
+            var filePath = Path.Combine(_storagePath, name ?? UniqueNameGenerator.GetName(contentType));
             if (File.Exists(filePath))
             {
                 throw new FileExistException(filePath);

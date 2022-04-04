@@ -6,8 +6,9 @@ namespace PCW.Data.SQLite
 {
     public class PostCardDbContext : DbContext, IPostCardDbContext
     {
-        public DbSet<PostCard> PostCards { get; set; }
-        public DbSet<Tag> Tags { get; set; }
+        public DbSet<PostCard> PostCards { get; set; } = default!;
+        public DbSet<PostCardTag> PostCardTag { get; set; } = default!;
+        public DbSet<Tag> Tags { get; set; } = default!;
         public Task<int> Save(CancellationToken cancellationToken = default)
         {
             return this.SaveChangesAsync(cancellationToken);
@@ -20,10 +21,7 @@ namespace PCW.Data.SQLite
             return ec;
         }
 
-        public PostCardDbContext(DbContextOptions<PostCardDbContext> options) : base(options)
-        {
-
-        }
+        public PostCardDbContext(DbContextOptions<PostCardDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

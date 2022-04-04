@@ -1,8 +1,5 @@
-﻿using PCW.Interfaces;
-using PCW.Rpc.TagService.Mapping;
-using PCW.Service;
+﻿using PCW.Rpc.TagService.Mapping;
 using PCW.Service.Hosting;
-using PCW.Service.Mapping;
 
 namespace PCW.Rpc.TagService.Hosting
 {

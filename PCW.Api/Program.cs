@@ -1,4 +1,5 @@
 using PCW.Api.Hosting;
+using PCW.Contracts.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +8,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApiMappingProfiles();
 builder.Services.AddRpcClient<PCW.Rpc.PostCardService.PostCard.PostCardClient>(
-    builder.Configuration["RpcServers:PostCardServer"]);
+    builder.GetSettings<RpcServers>().PostCardServer);
 builder.Services.AddRpcClient<PCW.Rpc.TagService.Tag.TagClient>(
-    builder.Configuration["RpcServers:TagServer"]);
+    builder.GetSettings<RpcServers>().TagServer);
 
 var app = builder.Build();
 

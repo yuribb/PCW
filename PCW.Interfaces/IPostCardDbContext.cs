@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using PCW.Data.Entities;
 
 namespace PCW.Interfaces
@@ -12,6 +7,7 @@ namespace PCW.Interfaces
     {
         DbSet<PostCard> PostCards { get; set; }
         DbSet<Tag> Tags { get; set; }
+        DbSet<PostCardTag> PostCardTag { get; set; }
         Task<int> Save(CancellationToken cancellationToken = default);
         bool CreateDbIfNotExist();
 

@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using Google.Protobuf;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PCW.Api.Commands;
 using PCW.Api.Commands.Responses;
-using PCW.Rpc.Command;
 using PCW.Rpc.PostCardService;
 
 namespace PCW.Api.Controllers
@@ -13,15 +11,21 @@ namespace PCW.Api.Controllers
     [ApiController]
     public class PostCardController : ControllerBase
     {
-        private readonly IWebHostEnvironment _environment;
         private readonly PostCard.PostCardClient _client;
         private readonly IMapper _mapper;
 
-        public PostCardController(IWebHostEnvironment environment, PostCard.PostCardClient client, IMapper mapper)
+        public PostCardController(PostCard.PostCardClient client, IMapper mapper)
         {
-            _environment = environment;
             _client = client;
             _mapper = mapper;
+        }
+
+        [HttpGet("{id:long}")]
+        public async Task<GetPostCardResponse> GetPostCard(long id)
+        {
+            var response = await _client.GetPostCardAsync(new GetPostCardRequest {Id =  id});
+            var result = _mapper.Map<GetPostCardResponse>(response);
+            return result;
         }
 
         [HttpPost]
@@ -31,9 +35,10 @@ namespace PCW.Api.Controllers
             {
                 File = new Rpc.Command.File
                 {
-                    Content = await ByteString.FromStreamAsync(command.Files.OpenReadStream()),
+                    Content = await ByteString.FromStreamAsync(command.File.OpenReadStream()),
                 },
                 Name = command.Name,
+                ContentType = command.ContentType,
                 TagIds = { command.TagIds }
             };
 

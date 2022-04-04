@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-    <PackageReference Include="Google.Protobuf" Version="3.19.4" />
+    <PackageReference Include="Google.Protobuf" Version="3.20.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.44.0" />
     <PackageReference Include="Grpc.Net.Client" Version="2.44.0" />
     <PackageReference Include="Grpc.Tools" Version="2.45.0">
@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PCW.Interfaces\PCW.Interfaces.csproj" />
     <ProjectReference Include="..\PCW.Service\PCW.Service.csproj" />
+    <ProjectReference Include="..\PCW.Storage.FileStorage\PCW.Storage.FileStorage.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
