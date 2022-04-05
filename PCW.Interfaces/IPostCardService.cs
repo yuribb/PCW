@@ -4,7 +4,7 @@ namespace PCW.Interfaces
 {
     public interface IPostCardService
     {
-        Task<PostCardDto> GetPostCard(long id);
+        Task<PostCardFullDto> GetPostCard(long id);
         Task<PostCardDto> AddPostCard(PostCardDto postCard);
         Task<PostCardDto> EditPostCard(PostCardDto postCard);
         Task<bool> RemovePostCard(long id);

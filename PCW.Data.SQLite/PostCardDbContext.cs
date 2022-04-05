@@ -27,7 +27,13 @@ namespace PCW.Data.SQLite
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<PostCardTag>().HasKey(i => new { i.PostCardId, i.TagId });
+            builder.Entity<PostCardTag>().HasKey(c => new { c.PostCardId, c.TagId });
+
+            builder.Entity<Tag>()
+                .HasMany(c => c.PostCards);
+
+            builder.Entity<PostCard>()
+                .HasMany(c => c.Tags);
         }
     }
 }

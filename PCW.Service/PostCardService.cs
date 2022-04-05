@@ -1,4 +1,6 @@
-﻿using PCW.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using PCW.Contracts;
+using PCW.Contracts.Exceptions;
 using PCW.Data.Entities;
 using PCW.Interfaces;
 
@@ -17,8 +19,14 @@ namespace PCW.Service
             _db.CreateDbIfNotExist();
         }
 
-        public Task<PostCardDto> GetPostCard(long id)
+        public async Task<PostCardFullDto> GetPostCard(long id)
         {
+            var postCard = await _db.PostCards.Include(pc => pc.Tags).FirstOrDefaultAsync(pc => pc.Id == id);
+            if (postCard == null)
+            {
+                throw new DataNotFoundException(typeof(PostCard), id);
+            }
+
             throw new NotImplementedException();
         }
 
